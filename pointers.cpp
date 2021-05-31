@@ -30,6 +30,7 @@ int main(){
     cout<<ch<<" "<<chptr<<endl;
 
     //Size of a pointer variable
+    cout<<"\nSize of a pointer variable"<<endl;
     cout<<"size of int pointer "<< sizeof(ptr)<<endl;
     cout<<"size of float pointer "<<sizeof(aptr)<<endl;
     cout<<"size of char pointer "<<sizeof(chptr)<<endl;
@@ -40,7 +41,17 @@ int main(){
     // It happens because when char pointer is used it points to one memory box
     // When integer pointer is used it points to the firsts box of a 4 box memory
 
-    //Dereference operator
+    //Dereference operator(*)
+    cout<<"\nDereference operator(*)"<<endl;
+    cout<<*(ptr)<<endl; // prints values of x
+    cout<<*(&x)<<endl; // prints values of x
+    cout<<ptr<<endl; // prints address of x
+    cout<<&(ptr)<<endl; // prints the address of ptr variable
+    cout<<*(&ptr)<<endl; // prints address of x
+    cout<<&(*ptr)<<endl; // prints address of x
 
+    // pointer that points to pointer
+    int** ptrptr = &ptr;
+    cout<<ptrptr<<endl;
     return  0;
 }
