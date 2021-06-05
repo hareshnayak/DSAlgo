@@ -49,4 +49,12 @@ TOPOLOGOCAL SEQUENNCE
     if there is edge between u and v [u-->v] then in topological sequence 'u'
         always comes before 'v'
 
+TOPOLOGCAL ORDERING
+- When the graph is directional Acyclic
+- Calculate the indegrees for all nodes
+- Choose the node with least indegree '0'
+- remove all out going edges from that node from graph and reassign indegrees to nodes
+- then repeat i.e., keep choosing the node with least indegree
+
+This gives topological ordering that is different from BFS or DFS
 */
