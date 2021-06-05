@@ -34,9 +34,19 @@ DEPTH FIRST TRAVERSAL (uses STACK to implement)
 node that has immediate neighbour and then continue
 - It uses LIFO (Last in First out)
 
-BREADTH FIRST TRAVERSAL (uses STACK to implement)
+BREADTH FIRST TRAVERSAL (uses QUEUE to implement)
+- Visit any node
+- Explore it completely
+- Repeat
 
+First in first out (FIFO)
 
+TRAVERSAL IS VALID ONLY IF ALL THE NODES/VERTICES ARE VISTED
 
+TOPOLOGOCAL SEQUENNCE
+- For having topological sequence, the graph must be DAG
+- If Graph is DAG,
+    if there is edge between u and v [u-->v] then in topological sequence 'u'
+        always comes before 'v'
 
 */
