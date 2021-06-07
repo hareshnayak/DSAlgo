@@ -46,12 +46,12 @@ int main(){
     cout<<*(ptr)<<endl; // prints values of x
     cout<<*(&x)<<endl; // prints values of x
     cout<<ptr<<endl; // prints address of x
-    cout<<&(ptr)<<endl; // prints the address of ptr variable
     cout<<*(&ptr)<<endl; // prints address of x
     cout<<&(*ptr)<<endl; // prints address of x
+    cout<<&(ptr)<<endl; // prints the address of ptr variable
 
     // pointer that points to pointer
     int** ptrptr = &ptr;
-    cout<<ptrptr<<endl;
+    cout<<ptrptr<<endl; // prints address of ptr
     return  0;
 }
