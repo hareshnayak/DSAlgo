@@ -8,25 +8,14 @@ GENERATING SUBARRAYS
 Given an array output all sub-arrays
 
 Finding the maximum/minimum sum subArray
-
 - Generate all the subArrays
 - Compare with current sum to max sum
-
 */
-
-
-int main(){
-
-int n,c=0,maxSum = 0, currentSum;
+void maxSubArray(int n ,int arr[])
+{
+int c=0,maxSum = 0, currentSum;
 int left, right;
-cout<<"Input n : "<<endl;
-cin>>n;
-int arr[n];
 
-for(int i = 0; i<n;i++){
-    cout<<"Enter arr["<<i<<"] : ";
-    cin>>arr[i];
-}
 cout<<"Output substrings"<<endl;
 for(int i =0 ; i<n ; i++){
     for(int j = i; j<n;j++){
@@ -45,7 +34,21 @@ for(int i =0 ; i<n ; i++){
         }
     }
     cout<<endl;
-}
+    }
 cout<<"max Sum : "<<maxSum<<" with subArray : "<<left<<","<<right;
+}
+
+
+int main(){
+int n;
+cout<<"Input n : "<<endl;
+cin>>n;
+int arr[n];
+for(int i = 0; i<n;i++)
+    {
+    cout<<"Enter arr["<<i<<"] : ";
+    cin>>arr[i];
+}
+maxSubArray(n,arr);
 return 0;
 }
