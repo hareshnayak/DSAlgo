@@ -88,6 +88,191 @@ void KadanesAlgo(int n , int arr[])
     cout<<"max sum is : "<<ms<<endl;
 }
 
+int sumOfNo(int n){
+    return n*(n+1)/2;
+}
+
+void searchNinsert0ifFound(int s, int n, int a[], int cap){
+    //Isnserts 0 at the position if 's' is found
+    for(int i=0; i<n;i++){
+        if(a[i]==s){
+            if(n==cap){
+                cout<<"n = cap"<<endl;
+                int g=2*cap;
+                int arr[g] = {0};
+                cout<<"cap = "<<cap<<" g = "<<g<<endl;
+                for(int k = 0;k<n;k++){
+                    arr[k]=a[k];
+                }
+                for(int j = n;j>=i;j--)
+                {
+                    arr[j+1]=arr[j];
+                }
+                arr[i]=0;
+                for(int z =0 ;z<g;z++)
+                    cout<<arr[z]<<' ';
+                    cout<<endl;
+            }
+            else{
+                cout<<"n != cap"<<endl;
+                for(int j = n-1;j>=i;j--)
+                {
+                    a[j+1]=a[j];
+                }                   
+            a[i]=0;
+            for(int z = 0 ;z<n+1;z++)
+                cout<<a[z]<<' ';
+                cout<<endl;
+        }
+        break;
+        }        
+    }    
+}
+
+// Return index of the largest no. in the given array
+int returnLarge(int a[], int n){
+for(int i = 0; i<n;i++){
+    bool flag = true;
+    for(int j = 0;j<n;j++){
+        if(a[j]>a[i]){
+            flag = false; 
+            break;
+        }
+    }
+    if(flag==true) return i;
+}
+return -1;
+}
+
+int returnLarge2(int a[], int n){
+    int res = 0;
+    for(int i=0;i<n;i++){
+        if(a[i]>a[res])
+        res = i;
+    }
+    return res;
+}
+
+int returnSecLarge(int a[], int n ){
+    int large = 0;
+    int seclar = 0;
+    for(int i=0;i<n;i++){
+        if(a[i]>a[large])
+        large = i;
+    }
+    for(int k=0;k<n;k++){
+        if(k!=large){
+            if(a[k]>a[seclar]){
+                seclar = k;
+            }
+        }
+    }
+    return seclar;
+}
+
+int secLarge2(int a[], int n){
+    // if multiple same vlaues then the seconad largest is not the same no
+    int large = 0;
+    int seclar = 0;
+    for(int i=0;i<n;i++){
+        if(a[i]>a[large])
+        large = i;
+    }    
+    for(int k=0;k<n;k++){
+        if(k!=large && a[k] != a[large]){
+            if(a[k]>a[seclar]){
+                seclar = k;
+            }
+        }
+    }
+    if(a[seclar] = a[large]){
+        return -1;
+    } 
+    return seclar;
+}
+
+int seclarge3(int a[], int n){
+    int large = 0, secLarge = -1;
+    for(int i = 1 ; i<n;i++)
+    {
+        if(a[i]>a[large])
+        {
+            secLarge = large;
+            large = i;         
+        }
+        else if(a[i]!=a[large])
+        {
+            if( a[i]>a[secLarge] || secLarge == -1 )
+                secLarge = i;            
+        }
+    }
+    return secLarge;
+}
+
+void sendAll0End(int a[], int n){
+    // time complexity is O(n^2)
+    for(int i = 0; i<n;i++){
+        if(a[i]==0){
+            for(int k = i+1; k<n;k++){
+             if(a[k]!=0)
+            { swap(a[i],a[k]);   
+             break;}
+            }            
+        }
+    }
+}
+
+void sendAll0End2(int a[] , int n )
+{
+    int count = 0;
+    for(int i =0; i<n;i++)
+    {
+       if(a[i]!=0)
+        {
+            swap(a[count],a[i]);
+            count++;            
+        }
+    }
+}
+
+void printARR(int a[], int n){
+    for(int i =0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int* reverseARR(int a[], int n){
+    int low = 0, high = n-1;
+    while(low<high){
+        swap(a[low],a[high]);
+        low++;
+        high--;
+    }
+    return a;
+}
+
+int* leftrotate(int a[],int n){
+    int d = a[0];
+    for(int i =0;i<n;i++){
+        a[i]=a[i+1];
+    }
+    a[n-1] = d;
+    return a;
+}
+
+void deleteOp(int s, int a[], int n){
+for(int i = 0 ; i<n;i++){
+    if(a[i]==s){
+        for(int j = i;j<n;j++){
+            a[j]=a[j+1];
+        }
+    }
+}
+printARR(a,n);
+cout<<0;
+cout<<endl;
+}
 
 
 int main(){
