@@ -49,6 +49,49 @@ struct MyHash{
     }
 };
 
+//Implementation of Open Addressing using Hashing
+struct MyHashOpen{
+    int *arr;
+    int bucket;
+    MyHashOpen(int b){
+        bucket = b;
+        for(int i = 0;i<bucket;i++)
+        arr[i]={-1};
+    }
+    void insert(int key){        
+        int i = hash(key);    
+        // linear probing 
+        while(arr[i]==-1) {        
+            i = (i+1)%bucket; // circular traversal                
+        }
+        arr[i] = key;
+    }
+    void deleteOp(int key){
+        int i = hash(key);
+        int h =i;
+       while(arr[i]!=key) {
+        if(arr[h]=key) arr[h] = -2;
+            h = (h+1)%bucket; // circular traversal            
+        if(i==h) cout<<"element not found!" << endl;
+        }                
+        cout<<"element not found!" << endl;     
+    }
+    bool search(int key){
+        int i = hash(key);
+        int h = i;
+        while(arr[i]!=key) {
+        if(arr[h]=key) return true;
+            h = (h+1)%bucket; // circular traversal            
+        if(i==h) return false ;
+        }        
+    return false;
+    }
+    int hash(int key){
+        // Implementing linear probing
+        return key%bucket;
+    }
+};
+
 
 int main() {
     int key;
