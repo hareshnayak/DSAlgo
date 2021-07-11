@@ -93,6 +93,86 @@ struct MyHashOpen{
 };
 
 
+class DoubleHash{
+    int size;
+    int cap = 13;
+    int *hashtable;
+    public:
+    DoubleHash(int b){
+        size=0;
+        cap = b;
+        hashtable = new int[cap];
+        for(int i = 0; i<b;i++){
+            hashtable[i] = -1;
+        }
+    }
+    bool isFull(){
+        return (size==cap);
+    }
+    int hash1(int key){
+        return key%cap;
+    }
+    int hash2(int key){
+        return ((cap-1) - key%(cap-1))%cap;
+    }
+    void insert(int key){
+        if(isFull()){return;}
+        int i = hash1(key);
+        if(hashtable[i] == -1 || hashtable[i] == -2 ) {hashtable[i] = key; size++;}
+        else{
+            int index = 1;           
+            while(1){
+                int newi = (hash1(key) + index * hash2(key))%cap;
+                if(hashtable[newi]==-1 || hashtable[i] == -2 ){
+                    hashtable[newi] = key;
+                    size++;
+                    break;
+                }
+                index++;
+            }
+        }
+    }
+     void search(int key)
+    {
+        int index1 = hash1(key);
+        int index2 = hash2(key);
+        int i = 0;
+        while (hashtable[(index1 + i * index2) % cap] != key) {
+            if (hashtable[(index1 + i * index2) % cap] == -1 ) {
+                cout << key << " does not exist" << endl;
+                return;
+            }
+            i++;
+        }
+        cout << key << " found" << endl;
+    }
+    void deleteOp(int key){
+        int index1 = hash1(key);
+        int index2 = hash2(key);
+        int i = 0;
+        if(hashtable[index1] == key) {hashtable[index1] = -2; return;}
+        while (1) {
+            if (hashtable[(index1 + i * index2) % cap] == -1) {
+                cout << key << " does not exist" << endl;
+                return;
+            }
+            if(hashtable[(index1 + i * index2) % cap] == key){hashtable[index1] = -2; break; return;}
+            i++;  
+        }    
+    }
+     void displayHash()
+    {
+        for (int i = 0; i < cap; i++) {
+            if (hashtable[i] != -1)
+                cout << i << " --> "
+                     << hashtable[i] << endl;
+            else
+                cout << i << endl;
+        }
+    }
+};
+
+
 int main() {
     int key;
     MyHash mh(7);            
