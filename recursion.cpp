@@ -115,6 +115,88 @@ void TowerHanoi(int n , char a='A' , char b='B', char c='C'){
 
 }
 
+int mul(int a , int b, int ans = 0 )
+{
+    // use only sub and add to mul;
+    int sum = ans;
+    if(b<1) return ans;
+    else { 
+        if(a)       
+        sum += a;
+        b-=1;        
+        return mul(a,b,sum);         
+    } 
+    // return sum;
+}
+
+int noOfZeroes(int n, int count = 0){
+    if(n==0)
+    return count;
+    if(n%10==0) count++;
+    return noOfZeroes(n/10,count);
+}
+
+float gemSum(int n,float ans = 0){
+    if(n<0) return ans;
+    return gemSum(n-1,ans+(1/pow(2,n)));
+}
+
+void palin(string a,int r, int l = 0){
+    bool flag = true;
+    if(l<r){        
+        if(a[l]!=a[r]){
+            flag = false;
+            cout<<"false"<<endl;
+            return;
+        }
+        return palin(a,l+1,r-1);
+    }
+    if(flag==true) cout<<"true"<<endl;
+}
+
+string replacepi(string str, int index=0){
+    if(index<str.length()){
+        if(str[index]=='p')
+            {
+                if(str[index+1]=='i')
+                {
+                    str.replace(index,2,"3.14");                                    
+                    return replacepi(str,index+1);
+                }
+            }
+            else{
+                return replacepi(str,index+1);
+            }                        
+    }
+    return str;
+}
+
+string removeX(string str, int index = 0){
+    if(index<str.length()){
+        if(str[index]=='x'|| str[index] == 'X') str.erase(index, 1);
+        return removeX(str, index+1);        
+    }
+    return str;
+}
+
+int returnInt(string str){
+    stringstream str1(str);
+    int i = 0;
+    str1>>i;
+    return i;
+}
+
+void toh(char a , char b, char c, int n){
+    if(n==1){
+        cout<<"move 1 from "<<a<<" to "<<c<<endl;
+        return;
+    }
+    toh(a,c,b,n-1);
+    cout<<"move "<<n<<" from "<<a<<" to "<<c<<endl;
+    toh(b,a,c,n-1);
+}
+
+
 int main() {
 // cout<<"factorial : "<<fact(5);
 // cout<<"factorial : "<<factTAIL(5);
